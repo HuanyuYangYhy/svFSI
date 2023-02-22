@@ -1,0 +1,13 @@
+# Target labels
+ Externals
+# Source files and their labels
+/Users/yanghuanyu/Desktop/modify_svFSI_source_code/svFSI-master/svFSI/build/CMakeFiles/Externals
+/Users/yanghuanyu/Desktop/modify_svFSI_source_code/svFSI-master/svFSI/build/CMakeFiles/Externals.rule
+/Users/yanghuanyu/Desktop/modify_svFSI_source_code/svFSI-master/svFSI/build/CMakeFiles/Externals-complete.rule
+/Users/yanghuanyu/Desktop/modify_svFSI_source_code/svFSI-master/svFSI/build/Externals-prefix/src/Externals-stamp/Externals-build.rule
+/Users/yanghuanyu/Desktop/modify_svFSI_source_code/svFSI-master/svFSI/build/Externals-prefix/src/Externals-stamp/Externals-configure.rule
+/Users/yanghuanyu/Desktop/modify_svFSI_source_code/svFSI-master/svFSI/build/Externals-prefix/src/Externals-stamp/Externals-download.rule
+/Users/yanghuanyu/Desktop/modify_svFSI_source_code/svFSI-master/svFSI/build/Externals-prefix/src/Externals-stamp/Externals-install.rule
+/Users/yanghuanyu/Desktop/modify_svFSI_source_code/svFSI-master/svFSI/build/Externals-prefix/src/Externals-stamp/Externals-mkdir.rule
+/Users/yanghuanyu/Desktop/modify_svFSI_source_code/svFSI-master/svFSI/build/Externals-prefix/src/Externals-stamp/Externals-patch.rule
+/Users/yanghuanyu/Desktop/modify_svFSI_source_code/svFSI-master/svFSI/build/Externals-prefix/src/Externals-stamp/Externals-update.rule

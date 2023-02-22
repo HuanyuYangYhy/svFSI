@@ -1,0 +1,23 @@
+{
+    "version": "0.0.1",
+    "configurations": [
+        {
+            "name": "Fortran Launch (GDB)",
+            "type": "lldb",
+            "request": "launch",
+            "targetArchitecture": "arm64",
+            "program": "${workspaceRoot}//${fileBasenameNoExtension}.exe",
+            "miDebuggerPath": "lldb.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceRoot}",
+            "externalConsole": true,
+            "preLaunchTask": "gfortran"
+        },
+        {
+            "name": "Arm64 Debug Attach",
+            "type": "lldb",
+            "request": "attach",
+            "processId": "${command:pickProcess}"
+        }
+    ] }

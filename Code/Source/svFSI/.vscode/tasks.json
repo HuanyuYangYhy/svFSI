@@ -1,0 +1,14 @@
+{
+    "version": "0.0.1",
+    "command": "gfortran",
+    "args": [
+        "-g",
+        "${file}",
+        "-o",
+        "${workspaceRoot}//${fileBasenameNoExtension}.exe"
+    ],
+    "problemMatchers": [],
+    "presentation": { 
+        "panel": "new" //默认为“shared“表示共享，改成new之后每个进程创建新的端口
+    }
+}
