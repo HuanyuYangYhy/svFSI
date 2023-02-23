@@ -618,9 +618,9 @@
          propL(5,1) = f_y
          propL(6,1) = f_z
          IF (.NOT.shellVar) THEN
-               propL(7,1) = shell_thickness
-               propL(8,1) = elasticity_modulus
-            END IF
+            propL(7,1) = shell_thickness
+            propL(8,1) = elasticity_modulus
+         END IF
          CALL READDOMAIN(lEq, propL, list)
 
          lPtr => list%get(pstEq, "Prestress")
