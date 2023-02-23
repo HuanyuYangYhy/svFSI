@@ -114,7 +114,7 @@
                vsp(:) = vsp(:)/REAL(eNoN, KIND=RKIND)
 !     yanghuanyu modified
                CALL SHELL3D(lM, g, eNoN, al, yl, dl, xl, bfl, lR,
-     2   lK)
+     2   lK, vsp)
             END DO
 
 !           Assembly
@@ -917,7 +917,7 @@
       END SUBROUTINE SHELLBENDCST
 !####################################################################
 !     Construct shell mechanics for higher order elements/NURBS
-      SUBROUTINE SHELL3D (lM, g, eNoN, al, yl, dl, xl, bfl, lR, lK)
+      SUBROUTINE SHELL3D (lM, g, eNoN, al, yl, dl, xl, bfl, lR, lK, vsp)
       USE COMMOD
       USE ALLFUN
       IMPLICIT NONE
@@ -947,7 +947,7 @@
 !         elM = vsp(2)
 !      ELSE
 !         elM = eq(cEq)%dmn(cDmn)%prop(elasticity_modulus)
-      END IF
+!      END IF
 !     yanghuanyu modified
       nu    = eq(cEq)%dmn(cDmn)%prop(poisson_ratio)
       ht    = eq(cEq)%dmn(cDmn)%prop(shell_thickness)
