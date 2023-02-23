@@ -353,13 +353,13 @@
       IF (flag) THEN
          IF (cm%mas()) THEN
             ALLOCATE(tmpX(nMsh,2,gtnNo))
-            tmpX = varWallProps
-            DEALLOCATE(varWallProps)
+            tmpX = varShellProps
+            DEALLOCATE(varShellProps)
          ELSE
             ALLOCATE(tmpX(0,0,0))
          END IF
-         ALLOCATE(varWallProps(nMsh,2,tnNo))
-         varWallProps = LOCAL(tmpX)
+         ALLOCATE(varShellProps(nMsh,2,tnNo))
+         varShellProps = LOCAL(tmpX)
          DEALLOCATE(tmpX)
       END IF
 !     yanghuanyu modified
