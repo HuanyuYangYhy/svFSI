@@ -114,7 +114,7 @@
                vsp(:) = vsp(:)/REAL(eNoN, KIND=RKIND)
 !     yanghuanyu modified
                CALL SHELL3D(lM, g, eNoN, al, yl, dl, xl, bfl, lR,
-     2   lK, vsp)
+     2   lK)
             END DO
 
 !           Assembly
@@ -917,7 +917,7 @@
       END SUBROUTINE SHELLBENDCST
 !####################################################################
 !     Construct shell mechanics for higher order elements/NURBS
-      SUBROUTINE SHELL3D (lM, g, eNoN, al, yl, dl, xl, bfl, lR, lK, vsp)
+      SUBROUTINE SHELL3D (lM, g, eNoN, al, yl, dl, xl, bfl, lR, lK)
       USE COMMOD
       USE ALLFUN
       IMPLICIT NONE
@@ -941,22 +941,22 @@
 !     Define parameters
       rho   = eq(cEq)%dmn(cDmn)%prop(solid_density)
       dmp   = eq(cEq)%dmn(cDmn)%prop(damping)
-!      elM   = eq(cEq)%dmn(cDmn)%prop(elasticity_modulus)
+      elM   = eq(cEq)%dmn(cDmn)%prop(elasticity_modulus)
 !     yanghuanyu modified
-      IF (shellVar) THEN
-         elM = vsp(2)
-      ELSE
-         elM = eq(cEq)%dmn(cDmn)%prop(elasticity_modulus)
+!      IF (shellVar) THEN
+!         elM = vsp(2)
+!      ELSE
+!         elM = eq(cEq)%dmn(cDmn)%prop(elasticity_modulus)
       END IF
 !     yanghuanyu modified
       nu    = eq(cEq)%dmn(cDmn)%prop(poisson_ratio)
-!      ht    = eq(cEq)%dmn(cDmn)%prop(shell_thickness)
+      ht    = eq(cEq)%dmn(cDmn)%prop(shell_thickness)
 !     yanghuanyu modified
-      IF (shellVar) THEN
-         ht  = vsp(1)
-      ELSE
-         ht  = eq(cEq)%dmn(cDmn)%prop(shell_thickness)
-      END IF
+!      IF (shellVar) THEN
+!         ht  = vsp(1)
+!      ELSE
+!         ht  = eq(cEq)%dmn(cDmn)%prop(shell_thickness)
+!      END IF
 !     yanghuanyu modified
       fb(1) = eq(cEq)%dmn(cDmn)%prop(f_x)
       fb(2) = eq(cEq)%dmn(cDmn)%prop(f_y)

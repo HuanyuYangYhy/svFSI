@@ -1,4 +1,4 @@
-# Install script for directory: /Users/yanghuanyu/Desktop/modify_svFSI_source_code/svFSI-master/svFSI
+# Install script for directory: /Users/yanghuanyu/Desktop/modify_svFSI_source_code/svFSI-master/Docker/svFSI
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/yanghuanyu/Desktop/modify_svFSI_source_code/svFSI-master/svFSI/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/yanghuanyu/Desktop/modify_svFSI_source_code/svFSI-master/Docker/svFSI/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

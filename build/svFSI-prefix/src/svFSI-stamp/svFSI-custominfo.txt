@@ -4,6 +4,6 @@
 
 method=custom
 command=
-source_dir=/Users/yanghuanyu/Desktop/modify_svFSI_source_code/svFSI-master/svFSI/Code
-work_dir=/Users/yanghuanyu/Desktop/modify_svFSI_source_code/svFSI-master/svFSI/build/svFSI-prefix/src
+source_dir=/Users/yanghuanyu/Desktop/modify_svFSI_source_code/svFSI-master/Docker/svFSI/Code
+work_dir=/Users/yanghuanyu/Desktop/modify_svFSI_source_code/svFSI-master/Docker/svFSI/build/svFSI-prefix/src
 
