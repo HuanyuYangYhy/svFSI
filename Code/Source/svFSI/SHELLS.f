@@ -113,8 +113,8 @@
                END DO
                vsp(:) = vsp(:)/REAL(eNoN, KIND=RKIND)
 !     yanghuanyu modified
-               CALL SHELL3D(lM, g, eNoN, al, yl, dl, xl, bfl, lR, lK,
-               2 vsp)
+               CALL SHELL3D(lM, g, eNoN, al, yl, dl, xl, bfl, lR,
+     2   lK, vsp)
             END DO
 
 !           Assembly
