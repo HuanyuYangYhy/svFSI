@@ -596,7 +596,7 @@
 
 
 !     yanghuanyu modified
-         lPBC => list%get(ctmp, "Variable Shell properties")
+         lPBC => list%get(ctmp, "Variable shell properties")
          IF (ASSOCIATED(lPBC)) THEN
             shellVar = .TRUE.
             IF (.NOT.ALLOCATED(varShellProps)) THEN
@@ -607,8 +607,8 @@
                iFa = 0
                lPtr => lPBC%get(ctmp, "Shell properties file path", 1)
                CALL READSHELLPROPSFF(ctmp, iM, iFa)
-               NULLIFY(lPBC)
             END DO
+            NULLIFY(lPBC)
          END IF
 !     yanghuanyu modified
 

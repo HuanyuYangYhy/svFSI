@@ -346,6 +346,24 @@
          DEALLOCATE(tmpX)
       END IF
 
+!     yanghuanyu modified
+!     For SHELL variable  properties
+      flag = ALLOCATED(varShellProps)
+      CALL cm%bcast(flag)
+      IF (flag) THEN
+         IF (cm%mas()) THEN
+            ALLOCATE(tmpX(nMsh,2,gtnNo))
+            tmpX = varWallProps
+            DEALLOCATE(varWallProps)
+         ELSE
+            ALLOCATE(tmpX(0,0,0))
+         END IF
+         ALLOCATE(varWallProps(nMsh,2,tnNo))
+         varWallProps = LOCAL(tmpX)
+         DEALLOCATE(tmpX)
+      END IF
+!     yanghuanyu modified
+
 !     Communicating cplBC data
       CALL cm%bcast(cplBC%nFa)
       CALL cm%bcast(cplBC%schm)
