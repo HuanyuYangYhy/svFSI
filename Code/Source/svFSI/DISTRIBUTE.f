@@ -352,15 +352,15 @@
       CALL cm%bcast(flag)
       IF (flag) THEN
          IF (cm%mas()) THEN
-            ALLOCATE(tmpX(nMsh,2,gtnNo))
-            tmpX = varShellProps
+            ALLOCATE(tmpD(nMsh,2,gtnNo))
+            tmpD = varShellProps
             DEALLOCATE(varShellProps)
          ELSE
-            ALLOCATE(tmpX(0,0,0))
+            ALLOCATE(tmpD(0,0,0))
          END IF
          ALLOCATE(varShellProps(nMsh,2,tnNo))
-         varShellProps = LOCAL(tmpX)
-         DEALLOCATE(tmpX)
+         varShellProps = LOCAL(tmpD)
+         DEALLOCATE(tmpD)
       END IF
 !     yanghuanyu modified
 
