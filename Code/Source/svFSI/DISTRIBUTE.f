@@ -359,7 +359,10 @@
             ALLOCATE(tmpD(0,0,0))
          END IF
          ALLOCATE(varShellProps(nMsh,2,tnNo))
-         varShellProps = LOCAL(tmpD)
+         DO i=1, nMsh
+            varShellProps(i,:,:) = LOCAL(tmpD(i,:,:))
+         END DO
+!         varShellProps = LOCAL(tmpD)
          DEALLOCATE(tmpD)
       END IF
 !     yanghuanyu modified
