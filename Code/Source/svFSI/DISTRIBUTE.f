@@ -347,21 +347,21 @@
       END IF
 
 !     yanghuanyu modified
-!     For SHELL variable  properties
-!      flag = ALLOCATED(varShellProps)
-!      CALL cm%bcast(flag)
-!      IF (flag) THEN
-!         IF (cm%mas()) THEN
-!            ALLOCATE(tmpX(nMsh,2,gtnNo))
-!            tmpX = varShellProps
-!            DEALLOCATE(varShellProps)
-!         ELSE
-!            ALLOCATE(tmpX(0,0,0))
-!         END IF
-!         ALLOCATE(varShellProps(nMsh,2,tnNo))
-!         varShellProps = LOCAL(tmpX)
-!         DEALLOCATE(tmpX)
-!      END IF
+     For SHELL variable  properties
+      flag = ALLOCATED(varShellProps)
+      CALL cm%bcast(flag)
+      IF (flag) THEN
+         IF (cm%mas()) THEN
+            ALLOCATE(tmpX(nMsh,2,gtnNo))
+            tmpX = varShellProps
+            DEALLOCATE(varShellProps)
+         ELSE
+            ALLOCATE(tmpX(0,0,0))
+         END IF
+         ALLOCATE(varShellProps(nMsh,2,tnNo))
+         varShellProps = LOCAL(tmpX)
+         DEALLOCATE(tmpX)
+      END IF
 !     yanghuanyu modified
 
 !     Communicating cplBC data
