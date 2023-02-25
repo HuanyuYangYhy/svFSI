@@ -347,7 +347,7 @@
       END IF
 
 !     yanghuanyu modified
-     For SHELL variable  properties
+!     For SHELL variable  properties
       flag = ALLOCATED(varShellProps)
       CALL cm%bcast(flag)
       IF (flag) THEN
