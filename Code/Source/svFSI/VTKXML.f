@@ -247,7 +247,7 @@
       IMPLICIT NONE
       TYPE(mshType), INTENT(INOUT) :: lM
       INTEGER(KIND=IKIND), INTENT(IN) :: m, idx
-      CHARACTER(LEN=*) :: fName, kwrd, NoN
+      CHARACTER(LEN=*) :: fName, kwrd, NoN, stra
 
       INTEGER(KIND=IKIND) :: iStat, a
       TYPE(vtkXMLType) :: vtu
@@ -262,9 +262,12 @@
       write(NoN,"(I4)") lM%gnNo
       write(*,*) NoN,lM%gnNo
 
+      write(stra,"(I4)") a
+      write(*,*) stra,a
+
       CALL getVTK_numPoints(vtu, a, iStat)
       IF (a .NE. lM%gnNo) err = "Mismatch in num points for "//
-     2   TRIM(kwrd)//"a="//TRIM(a)//"gnNo="//TRIM(NoN)//
+     2   TRIM(kwrd)//"a="//TRIM(stra)//"gnNo="//TRIM(NoN)//
      2   "fname="//TRIM(fName)
 
       IF (m .EQ. nsd) THEN
