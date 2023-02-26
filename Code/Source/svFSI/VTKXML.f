@@ -260,13 +260,14 @@
       CALL loadVTK(vtu, fName, iStat)
       IF (iStat .LT. 0) err = "VTU file read error (init)"
 
-      write(NoN,"(I4)") lM%gnNo
-      write(*,*) NoN,lM%gnNo
+      CALL getVTK_numPoints(vtu, a, iStat)
 
       write(stra,"(I4)") a
       write(*,*) stra,a
 
-      CALL getVTK_numPoints(vtu, a, iStat)
+      write(NoN,"(I4)") lM%gnNo
+      write(*,*) NoN,lM%gnNo
+
       IF (a .NE. lM%gnNo) err = "Mismatch in num points for "//
      2   TRIM(kwrd)//"a="//TRIM(stra)//"gnNo="//TRIM(NoN)//
      2   "fname="//TRIM(fName)
