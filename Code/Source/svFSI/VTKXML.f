@@ -247,7 +247,8 @@
       IMPLICIT NONE
       TYPE(mshType), INTENT(INOUT) :: lM
       INTEGER(KIND=IKIND), INTENT(IN) :: m, idx
-      CHARACTER(LEN=*) :: fName, kwrd, NoN, stra
+      CHARACTER(LEN=*) :: fName, kwrd
+      character(len=20) :: NoN, stra
 
       INTEGER(KIND=IKIND) :: iStat, a
       TYPE(vtkXMLType) :: vtu
