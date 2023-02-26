@@ -591,8 +591,7 @@
          lEq%phys = phys_shell
          shlEq    = .TRUE.
 
-
-!     yanghuanyu modified
+!        yanghuanyu modified
          lPBC => list%get(ctmp, "Variable shell properties")
          IF (ASSOCIATED(lPBC)) THEN
             shellVar = .TRUE.
@@ -607,7 +606,7 @@
             END DO
             NULLIFY(lPBC)
          END IF
-!     yanghuanyu modified
+!        yanghuanyu modified
 
          propL(1,1) = solid_density
          propL(2,1) = damping

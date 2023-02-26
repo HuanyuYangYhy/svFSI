@@ -261,7 +261,8 @@
 
       CALL getVTK_numPoints(vtu, a, iStat)
       IF (a .NE. lM%gnNo) err = "Mismatch in num points for "//
-     2   TRIM(kwrd)
+     2   TRIM(kwrd)//"a="//TRIM(a)//"gnNo="//TRIM(lM%gnNo)//
+     2   "fname="//TRIM(fName)
 
       IF (m .EQ. nsd) THEN
          ALLOCATE(tmpR(maxNSD,lM%gnNo))
