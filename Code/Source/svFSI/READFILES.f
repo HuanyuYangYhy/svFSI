@@ -592,24 +592,17 @@
          shlEq    = .TRUE.
 
 !        yanghuanyu modified
-         lPBC => list%get(ctmp, "Variable shell properties")
-         IF (ASSOCIATED(lPBC)) THEN
+         nVar=list%srch("Variable shell properties")
+         IF (nVar .EQ nMsh) THEN
             shellVar = .TRUE.
             IF (.NOT.ALLOCATED(varShellProps)) THEN
                ALLOCATE(varShellProps(nMsh,2,gtnNo))
                varShellProps = 0._RKIND
             END IF
-            iM=1
-            iFa = 0
-            lPtr => lPBC%get(ctmp, "Shell properties file path", 1)
-            CALL READSHELLPROPSFF(ctmp, iM, iFa)
-         END IF
-
-         IF (ASSOCIATED(lPBC)) THEN
-            DO iM=2, nMsh
-               lPBC => list%get(ctmp, "Variable shell properties")
+            DO iM=1, nMsh
+               lPBC => list%get(ctmp, "Variable shell properties",iM)
                iFa = 0
-               lPtr => lPBC%get(ctmp, "Shell properties file path", iM)
+               lPtr => lPBC%get(ctmp, "Shell properties file path")
                CALL READSHELLPROPSFF(ctmp, iM, iFa)
             END DO
             NULLIFY(lPBC)
