@@ -609,7 +609,7 @@
             DO iM=2, nMsh
                lPBC => list%get(ctmp, "Variable shell properties")
                iFa = 0
-               lPtr => lPBC%get(ctmp, "Shell properties file path", 1)
+               lPtr => lPBC%get(ctmp, "Shell properties file path", iM)
                CALL READSHELLPROPSFF(ctmp, iM, iFa)
             END DO
             NULLIFY(lPBC)
