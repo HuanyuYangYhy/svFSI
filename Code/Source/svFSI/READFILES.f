@@ -43,7 +43,7 @@
       IMPLICIT NONE
 
       LOGICAL :: flag
-      INTEGER(KIND=IKIND) :: i, iEq, nVar
+      INTEGER(KIND=IKIND) :: i, iEq
       INTEGER(KIND=IKIND) :: tArray(8)
       REAL(KIND=RKIND) :: roInf
       CHARACTER(LEN=8) :: date
@@ -338,7 +338,8 @@
 
       LOGICAL THflag
       INTEGER(KIND=IKIND) fid, iBc, iBf, iM, iFa, phys(4),
-     2   propL(maxNProp,10), outPuts(maxOutput), nDOP(4)
+     2   propL(maxNProp,10), outPuts(maxOutput), nDOP(4),
+     2   nVar
       CHARACTER(LEN=stdL) ctmp
       TYPE(listType), POINTER :: lPtr, lPBC, lPBF
       TYPE(fileType) fTmp
@@ -593,7 +594,7 @@
 
 !        yanghuanyu modified
          nVar=list%srch("Variable shell properties")
-         IF (nVar .EQ nMsh) THEN
+         IF (nVar .EQ. nMsh) THEN
             shellVar = .TRUE.
             IF (.NOT.ALLOCATED(varShellProps)) THEN
                ALLOCATE(varShellProps(nMsh,2,gtnNo))
