@@ -43,7 +43,7 @@
       IMPLICIT NONE
 
       LOGICAL :: flag
-      INTEGER(KIND=IKIND) :: i, iEq
+      INTEGER(KIND=IKIND) :: i, iEq, nVar
       INTEGER(KIND=IKIND) :: tArray(8)
       REAL(KIND=RKIND) :: roInf
       CHARACTER(LEN=8) :: date
