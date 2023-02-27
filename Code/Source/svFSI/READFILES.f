@@ -599,12 +599,14 @@
                ALLOCATE(varShellProps(nMsh,2,gtnNo))
                varShellProps = 0._RKIND
             END IF
+            iM=1
             iFa = 0
             lPtr => lPBC%get(ctmp, "Shell properties file path", 1)
             CALL READSHELLPROPSFF(ctmp, iM, iFa)
          END IF
+
          IF (ASSOCIATED(lPBC)) THEN
-            DO iM=2: nMsh
+            DO iM=2, nMsh
                lPBC => list%get(ctmp, "Variable shell properties")
                iFa = 0
                lPtr => lPBC%get(ctmp, "Shell properties file path", 1)
