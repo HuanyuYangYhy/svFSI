@@ -612,16 +612,12 @@
 
          propL(1,1) = solid_density
          propL(2,1) = damping
-!         propL(3,1) = elasticity_modulus
+         propL(3,1) = elasticity_modulus
          propL(3,1) = poisson_ratio
- !        propL(5,1) = shell_thickness
+         propL(5,1) = shell_thickness
          propL(4,1) = f_x
          propL(5,1) = f_y
          propL(6,1) = f_z
-         IF (.NOT.shellVar) THEN
-            propL(7,1) = shell_thickness
-            propL(8,1) = elasticity_modulus
-         END IF
          CALL READDOMAIN(lEq, propL, list)
 
          lPtr => list%get(pstEq, "Prestress")
