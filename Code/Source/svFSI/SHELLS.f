@@ -36,7 +36,7 @@
 !
 !--------------------------------------------------------------------
 
-      SUBROUTINE CONSTRUCT_SHELL(lM, Ag, Yg, Dg)
+      SUBROUTINE CONSTRUCT_SHELL(lM, Ag, Yg, Dg, iM)
       USE COMMOD
       USE ALLFUN
       IMPLICIT NONE
@@ -89,7 +89,7 @@
             dl(:,a)  = Dg(:,Ac)
             bfl(:,a) = Bf(:,Ac)
 !     yanghuanyu modified
-            IF (shellVar) vspl(:,a) = varShellProps(1,:,Ac)
+            IF (shellVar) vspl(:,a) = varShellProps(iM,:,Ac)
 !     yanghuanyu modified
          END DO
 

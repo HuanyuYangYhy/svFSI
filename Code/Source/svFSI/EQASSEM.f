@@ -35,7 +35,7 @@
 !
 !--------------------------------------------------------------------
 
-      SUBROUTINE GLOBALEQASSEM(lM, Ag, Yg, Dg)
+      SUBROUTINE GLOBALEQASSEM(lM, Ag, Yg, Dg, iM)
       USE COMMOD
       IMPLICIT NONE
       TYPE(mshType), INTENT(IN) :: lM
@@ -65,7 +65,7 @@
          CALL CONSTRUCT_CMM(lM, Ag, Yg, Dg)
 
       CASE (phys_shell)
-         CALL CONSTRUCT_SHELL(lM, Ag, Yg, Dg)
+         CALL CONSTRUCT_SHELL(lM, Ag, Yg, Dg, iM)
 
       CASE (phys_FSI)
          CALL CONSTRUCT_FSI(lM, Ag, Yg, Dg)
