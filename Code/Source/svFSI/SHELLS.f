@@ -89,7 +89,7 @@
             dl(:,a)  = Dg(:,Ac)
             bfl(:,a) = Bf(:,Ac)
 !     yanghuanyu modified
-            IF (shellVar) vspl(:,a) = varShellProps(e,:,Ac)
+            IF (shellVar) vspl(:,a) = varShellProps(1,:,Ac)
 !     yanghuanyu modified
          END DO
 
@@ -104,15 +104,16 @@
 !           Update shape functions for NURBS elements
             IF (lM%eType .EQ. eType_NRB) CALL NRBNNX(lM, e)
 
+!           yanghuanyu modified
+            vsp(:) = 0._RKIND
+            DO a=1, eNoN
+               vsp(:) = vsp(:) + vspl(:,a)
+            END DO
+            vsp(:) = vsp(:)/REAL(eNoN, KIND=RKIND)
+!           yanghuanyu modified
+
 !           Gauss integration
             DO g=1, lM%nG
-!     yanghuanyu modified
-               vsp(:) = 0._RKIND
-               DO a=1, eNoN
-                  vsp(:) = vsp(:) + vspl(:,a)
-               END DO
-               vsp(:) = vsp(:)/REAL(eNoN, KIND=RKIND)
-!     yanghuanyu modified
                CALL SHELL3D(lM, g, eNoN, al, yl, dl, xl, bfl, lR,
      2   lK, vsp)
             END DO
