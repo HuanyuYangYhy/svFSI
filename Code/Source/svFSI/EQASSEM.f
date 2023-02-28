@@ -41,7 +41,7 @@
       TYPE(mshType), INTENT(IN) :: lM
       REAL(KIND=RKIND), INTENT(IN) :: Ag(tDof,tnNo), Yg(tDof,tnNo),
      2   Dg(tDof,tnNo)
-     INTEGER(KIND=IKIND), INTENT(IN) :: iM
+      INTEGER(KIND=IKIND), INTENT(IN) :: iM
 
       SELECT CASE (eq(cEq)%phys)
       CASE (phys_fluid)
