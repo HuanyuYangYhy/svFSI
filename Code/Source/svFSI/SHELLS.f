@@ -44,6 +44,7 @@
       REAL(KIND=RKIND), INTENT(IN) :: Ag(tDof,tnNo), Yg(tDof,tnNo),
      2   Dg(tDof,tnNo)
 
+      INTEGER(KIND=IKIND), INTENT(IN) :: iM
       INTEGER(KIND=IKIND) a, b, e, g, Ac, eNoN, cPhys
       REAL(KIND=RKIND) vsp(2)
 

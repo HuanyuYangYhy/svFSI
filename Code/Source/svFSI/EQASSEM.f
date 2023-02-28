@@ -41,6 +41,7 @@
       TYPE(mshType), INTENT(IN) :: lM
       REAL(KIND=RKIND), INTENT(IN) :: Ag(tDof,tnNo), Yg(tDof,tnNo),
      2   Dg(tDof,tnNo)
+     INTEGER(KIND=IKIND), INTENT(IN) :: iM
 
       SELECT CASE (eq(cEq)%phys)
       CASE (phys_fluid)
@@ -65,6 +66,7 @@
          CALL CONSTRUCT_CMM(lM, Ag, Yg, Dg)
 
       CASE (phys_shell)
+!              yanghuanyu modified      
          CALL CONSTRUCT_SHELL(lM, Ag, Yg, Dg, iM)
 
       CASE (phys_FSI)
