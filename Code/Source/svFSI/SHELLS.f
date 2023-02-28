@@ -959,6 +959,7 @@
       ELSE
          ht  = eq(cEq)%dmn(cDmn)%prop(shell_thickness)
       END IF
+      write(*,*) elM, ht
 !     yanghuanyu modified
       fb(1) = eq(cEq)%dmn(cDmn)%prop(f_x)
       fb(2) = eq(cEq)%dmn(cDmn)%prop(f_y)
