@@ -118,6 +118,7 @@
             write(strela,"(I4)") vsp(2)
             err = "thickness= "//TRIM(strht)//"elm="//
      2   TRIM(strela)
+            write(*,*) vsp(1),vsp(2)
 !           Gauss integration
             DO g=1, lM%nG
                CALL SHELL3D(lM, g, eNoN, al, yl, dl, xl, bfl, lR,
