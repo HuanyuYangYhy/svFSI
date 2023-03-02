@@ -136,9 +136,8 @@
             CALL SETBF(Dg)
 
             dbg = "Assembling equation <"//eq(cEq)%sym//">"
-            DO iM=1, nMsh
-!              yanghuanyu modified          
-               CALL GLOBALEQASSEM(msh(iM), Ag, Yg, Dg, iM)
+            DO iM=1, nMsh         
+               CALL GLOBALEQASSEM(msh(iM), Ag, Yg, Dg)
                dbg = "Mesh "//iM//" is assembled"
             END DO
 

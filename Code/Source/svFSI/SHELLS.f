@@ -36,7 +36,7 @@
 !
 !--------------------------------------------------------------------
 
-      SUBROUTINE CONSTRUCT_SHELL(lM, Ag, Yg, Dg, iM)
+      SUBROUTINE CONSTRUCT_SHELL(lM, Ag, Yg, Dg)
       USE COMMOD
       USE ALLFUN
       IMPLICIT NONE
@@ -44,7 +44,6 @@
       REAL(KIND=RKIND), INTENT(IN) :: Ag(tDof,tnNo), Yg(tDof,tnNo),
      2   Dg(tDof,tnNo)
 
-      INTEGER(KIND=IKIND), INTENT(IN) :: iM
       INTEGER(KIND=IKIND) a, b, e, g, Ac, eNoN, cPhys
       REAL(KIND=RKIND) vsp(2)
 
@@ -92,7 +91,7 @@
             dl(:,a)  = Dg(:,Ac)
             bfl(:,a) = Bf(:,Ac)
 !     yanghuanyu modified
-            IF (shellVar) vspl(:,a) = varShellProps(iM,:,Ac)
+            IF (shellVar) vspl(:,a) = varShellProps(:,Ac)
 !     yanghuanyu modified
          END DO
 
@@ -114,11 +113,7 @@
             END DO
             vsp(:) = vsp(:)/REAL(eNoN, KIND=RKIND)
 !           yanghuanyu modified
-            write(strht,"(I4)") vsp(1)
-            write(strela,"(I4)") vsp(2)
-            err = "thickness= "//TRIM(strht)//"elm="//
-     2   TRIM(strela)
-            write(*,*) vsp(1),vsp(2)
+
 !           Gauss integration
             DO g=1, lM%nG
                CALL SHELL3D(lM, g, eNoN, al, yl, dl, xl, bfl, lR,

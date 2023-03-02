@@ -981,7 +981,7 @@
 
 !     yanghuanyu modified
 !     variable shell properties: 1-thickness, 2-Elasticity modulus
-      REAL(KIND=RKIND), ALLOCATABLE :: varShellProps(:,:,:)
+      REAL(KIND=RKIND), ALLOCATABLE :: varShellProps(:,:)
 !     yanghuanyu modified
 
 !     DERIVED TYPE VARIABLES

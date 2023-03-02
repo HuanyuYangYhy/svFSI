@@ -339,7 +339,7 @@
       LOGICAL THflag
       INTEGER(KIND=IKIND) fid, iBc, iBf, iM, iFa, phys(4),
      2   propL(maxNProp,10), outPuts(maxOutput), nDOP(4),
-     2   nVar
+     2   nVar,a
       CHARACTER(LEN=stdL) ctmp
       TYPE(listType), POINTER :: lPtr, lPBC, lPBF
       TYPE(fileType) fTmp
@@ -597,7 +597,7 @@
          IF (nVar .EQ. nMsh) THEN
             shellVar = .TRUE.
             IF (.NOT.ALLOCATED(varShellProps)) THEN
-               ALLOCATE(varShellProps(nMsh,2,gtnNo))
+               ALLOCATE(varShellProps(2,gtnNo))
                varShellProps = 0._RKIND
             END IF
             DO iM=1, nMsh
@@ -605,6 +605,8 @@
                iFa = 0
                lPtr => lPBC%get(ctmp, "Shell properties file path")
                CALL READSHELLPROPSFF(ctmp, iM, iFa)
+               write(*,*) a, iM
+               write(*,*) varShellProps(1,1),varShellProps(2,1)
             END DO
             NULLIFY(lPBC)
          END IF
@@ -3190,13 +3192,14 @@ c     2         "can be applied for Neumann boundaries only"
 
       IF (ALLOCATED(msh(iM)%x)) DEALLOCATE(msh(iM)%x)
       ALLOCATE(msh(iM)%x(1,msh(iM)%gnNo))
+      write(*,*) fname
 !        Read thickness
       msh(iM)%x = 0._RKIND
       CALL READVTUPDATA(msh(iM), fname, "Thickness", 1, 1)
       DO a=1, msh(iM)%gnNo
          Ac = msh(iM)%gN(a)
-         varShellProps(iM,1,Ac) = msh(iM)%x(1,a)
-         write(*,*) varShellProps(iM,1,Ac)
+         varShellProps(1,Ac) = msh(iM)%x(1,a)
+         write(*,*) a, iM, Ac, varShellProps(1,Ac)
       END DO
 
 !        Read elasticity modulus
@@ -3204,11 +3207,10 @@ c     2         "can be applied for Neumann boundaries only"
       CALL READVTUPDATA(msh(iM), fname, "Elasticity_modulus", 1, 1)
       DO a=1, msh(iM)%gnNo
          Ac = msh(iM)%gN(a)
-         varShellProps(iM,2,Ac) = msh(iM)%x(1,a)
-         write(*,*) varShellProps(iM,2,Ac)
+         varShellProps(2,Ac) = msh(iM)%x(1,a)
+         write(*,*) a, iM, Ac, varShellProps(2,Ac)
       END DO
       DEALLOCATE(msh(iM)%x)
-         
 
       RETURN
       END SUBROUTINE READSHELLPROPSFF
