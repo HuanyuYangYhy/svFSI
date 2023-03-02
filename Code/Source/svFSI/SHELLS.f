@@ -48,6 +48,8 @@
       INTEGER(KIND=IKIND) a, b, e, g, Ac, eNoN, cPhys
       REAL(KIND=RKIND) vsp(2)
 
+      character(len=20) :: strht, strela
+
       INTEGER(KIND=IKIND), ALLOCATABLE :: ptr(:)
       REAL(KIND=RKIND), ALLOCATABLE :: xl(:,:), al(:,:), yl(:,:),
      2   dl(:,:), bfl(:,:), lR(:,:), lK(:,:,:), vspl(:,:)
@@ -112,7 +114,10 @@
             END DO
             vsp(:) = vsp(:)/REAL(eNoN, KIND=RKIND)
 !           yanghuanyu modified
-
+            write(strht,"(I4)") vsp(1)
+            write(strela,"(I4)") vsp(2)
+            err = "thickness= "//TRIM(strht)//"elm="//
+     2   TRIM(strela)
 !           Gauss integration
             DO g=1, lM%nG
                CALL SHELL3D(lM, g, eNoN, al, yl, dl, xl, bfl, lR,
