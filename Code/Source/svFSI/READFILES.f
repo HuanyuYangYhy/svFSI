@@ -605,8 +605,6 @@
                iFa = 0
                lPtr => lPBC%get(ctmp, "Shell properties file path")
                CALL READSHELLPROPSFF(ctmp, iM, iFa)
-               write(*,*) a, iM
-               write(*,*) varShellProps(1,1),varShellProps(2,1)
             END DO
             NULLIFY(lPBC)
          END IF
@@ -3192,14 +3190,13 @@ c     2         "can be applied for Neumann boundaries only"
 
       IF (ALLOCATED(msh(iM)%x)) DEALLOCATE(msh(iM)%x)
       ALLOCATE(msh(iM)%x(1,msh(iM)%gnNo))
-      write(*,*) fname
+
 !        Read thickness
       msh(iM)%x = 0._RKIND
       CALL READVTUPDATA(msh(iM), fname, "Thickness", 1, 1)
       DO a=1, msh(iM)%gnNo
          Ac = msh(iM)%gN(a)
          varShellProps(1,Ac) = msh(iM)%x(1,a)
-         write(*,*) a, iM, Ac, varShellProps(1,Ac)
       END DO
 
 !        Read elasticity modulus
@@ -3208,7 +3205,6 @@ c     2         "can be applied for Neumann boundaries only"
       DO a=1, msh(iM)%gnNo
          Ac = msh(iM)%gN(a)
          varShellProps(2,Ac) = msh(iM)%x(1,a)
-         write(*,*) a, iM, Ac, varShellProps(2,Ac)
       END DO
       DEALLOCATE(msh(iM)%x)
 

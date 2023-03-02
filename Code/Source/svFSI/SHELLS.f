@@ -94,10 +94,19 @@
             IF (shellVar) vspl(:,a) = varShellProps(:,Ac)
 !     yanghuanyu modified
          END DO
+!     yanghuanyu modified
+         vsp(:) = 0._RKIND
+         DO a=1, eNoN
+            vsp(:) = vsp(:) + vspl(:,a)
+         END DO
+         vsp(:) = vsp(:)/REAL(eNoN, KIND=RKIND)
+!         write(*,*) vsp(1),vsp(2)
+!     yanghuanyu modified
 
          IF (lM%eType .EQ. eType_TRI3) THEN
 !           Constant strain triangles, no numerical integration
-            CALL SHELLCST(lM, e, eNoN, al, yl, dl, xl, bfl, ptr)
+            CALL SHELLCST(lM, e, eNoN, al, yl, dl, xl, bfl, ptr,
+     2   vsp)
 
          ELSE
             lR = 0._RKIND
@@ -105,15 +114,7 @@
 
 !           Update shape functions for NURBS elements
             IF (lM%eType .EQ. eType_NRB) CALL NRBNNX(lM, e)
-
-!           yanghuanyu modified
-            vsp(:) = 0._RKIND
-            DO a=1, eNoN
-               vsp(:) = vsp(:) + vspl(:,a)
-            END DO
-            vsp(:) = vsp(:)/REAL(eNoN, KIND=RKIND)
-!           yanghuanyu modified
-
+            
 !           Gauss integration
             DO g=1, lM%nG
                CALL SHELL3D(lM, g, eNoN, al, yl, dl, xl, bfl, lR,
@@ -139,14 +140,14 @@
       END SUBROUTINE CONSTRUCT_SHELL
 !####################################################################
 !     Construct shell mechanics for constant strain triangle elements
-      SUBROUTINE SHELLCST (lM, e, eNoN, al, yl, dl, xl, bfl, ptr)
+      SUBROUTINE SHELLCST (lM, e, eNoN, al, yl, dl, xl, bfl, ptr, vsp)
       USE COMMOD
       USE ALLFUN
       IMPLICIT NONE
       TYPE(mshType), INTENT(IN) :: lM
       INTEGER(KIND=IKIND), INTENT(IN) :: e, eNoN, ptr(eNoN)
       REAL(KIND=RKIND), INTENT(IN) :: al(tDof,eNoN), yl(tDof,eNoN),
-     2   dl(tDof,eNoN), xl(3,eNoN), bfl(3,eNoN)
+     2   dl(tDof,eNoN), xl(3,eNoN), bfl(3,eNoN), vsp(2)
 
       LOGICAL :: setIt(3)
       INTEGER(KIND=IKIND) :: i, j, k, a, b, g
@@ -167,9 +168,23 @@
 !     Define parameters
       rho   = eq(cEq)%dmn(cDmn)%prop(solid_density)
       dmp   = eq(cEq)%dmn(cDmn)%prop(damping)
-      elM   = eq(cEq)%dmn(cDmn)%prop(elasticity_modulus)
+!      elM   = eq(cEq)%dmn(cDmn)%prop(elasticity_modulus)
+!     yanghuanyu modified
+      IF (shellVar) THEN
+         elM = vsp(2)
+      ELSE
+         elM = eq(cEq)%dmn(cDmn)%prop(elasticity_modulus)
+      END IF
+!     yanghuanyu modified
       nu    = eq(cEq)%dmn(cDmn)%prop(poisson_ratio)
-      ht    = eq(cEq)%dmn(cDmn)%prop(shell_thickness)
+!      ht    = eq(cEq)%dmn(cDmn)%prop(shell_thickness)
+!     yanghuanyu modified
+      IF (shellVar) THEN
+         ht  = vsp(1)
+      ELSE
+         ht  = eq(cEq)%dmn(cDmn)%prop(shell_thickness)
+      END IF
+!     yanghuanyu modified
       fb(1) = eq(cEq)%dmn(cDmn)%prop(f_x)
       fb(2) = eq(cEq)%dmn(cDmn)%prop(f_y)
       fb(3) = eq(cEq)%dmn(cDmn)%prop(f_z)
