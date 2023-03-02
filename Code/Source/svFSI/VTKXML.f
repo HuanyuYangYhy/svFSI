@@ -276,6 +276,7 @@
          IF (iStat .LT. 0) err = "VTU file read error "//TRIM(kwrd)
          DO a=1, lM%gnNo
             lM%x((idx-1)*nsd+1:idx*nsd,a) = tmpR(1:nsd,a)
+            write(*,*) tmpR(1:nsd,a)
          END DO
          DEALLOCATE(tmpR)
       ELSE
