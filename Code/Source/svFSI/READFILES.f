@@ -3196,7 +3196,7 @@ c     2         "can be applied for Neumann boundaries only"
       DO a=1, msh(iM)%gnNo
          Ac = msh(iM)%gN(a)
          varShellProps(iM,1,Ac) = msh(iM)%x(1,a)
-         write(strht,"(I4)") varShellProps(iM,1,Ac)
+         write(*) varShellProps(iM,1,Ac)
       END DO
 
 !        Read elasticity modulus
@@ -3205,7 +3205,7 @@ c     2         "can be applied for Neumann boundaries only"
       DO a=1, msh(iM)%gnNo
          Ac = msh(iM)%gN(a)
          varShellProps(iM,2,Ac) = msh(iM)%x(1,a)
-         write(strela,"(I4)") varShellProps(iM,2,Ac)
+         write(*) varShellProps(iM,2,Ac)
       END DO
       DEALLOCATE(msh(iM)%x)
 
